@@ -1,5 +1,6 @@
 package cinema;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,7 @@ public class CreateMovieCommand {
     private LocalDateTime time;
     @Min(20)
     private int totalSpace;
+
+
+
 }
