@@ -38,6 +38,9 @@ public class MovieController {
         return movieService.reservationMovie(id, command);
     }
 
-
+    @PutMapping("/{id}")
+    public MovieDTO updateMovie(@PathVariable("id") long id, @RequestBody UpdateDateCommand command) {
+        return movieService.updateEmployee(id, command);
+    }
 
 }
