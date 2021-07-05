@@ -35,4 +35,18 @@ public class MovieService {
 
 
     }
+
+    public MovieDTO findMovieById(long id) {
+        Movie movie = movieFinder(id);
+
+        return modelMapper.map(movie, MovieDTO.class);
+    }
+
+    private Movie movieFinder(long id) {
+        return movies
+                .stream()
+                .filter(n -> n.getId() == id)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Movie not found:  " + id));
+    }
 }

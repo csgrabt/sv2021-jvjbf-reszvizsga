@@ -1,20 +1,17 @@
 package cinema;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("api/cinema")
 @RestController
-public class MoviController {
+public class MovieController {
     private MovieService movieService;
 
-    public MoviController(MovieService movieService) {
+    public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
 
@@ -23,4 +20,8 @@ public class MoviController {
         return movieService.movieList(title);
     }
 
+    @GetMapping("/{id}")
+    public MovieDTO findEmployeeById(@PathVariable("id") long id) {
+        return movieService.findMovieById(id);
+    }
 }
