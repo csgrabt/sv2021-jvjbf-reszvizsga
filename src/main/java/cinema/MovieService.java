@@ -76,4 +76,9 @@ public class MovieService {
 
 
     }
+
+    public void deleteAll() {
+        movies.clear();
+        idGenerator = new AtomicLong();
+    }
 }

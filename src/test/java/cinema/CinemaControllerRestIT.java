@@ -143,26 +143,26 @@ public class CinemaControllerRestIT {
 
 
     }
+
+  @Test
+  void createMovieWithInvalidMax() {
+      Problem result = template.postForObject("/api/cinema",
+              new CreateMovieCommand("", LocalDateTime.of(2021, 6, 30, 12, 30), 15),
+              Problem.class);
+
+
+      assertEquals(Status.BAD_REQUEST, result.getStatus());
+
+
+  }
 //
-    //   @Test
-    //   void createMovieWithInvalidMax() {
-    //       Problem result = template.postForObject("/api/cinema",
-    //               new CreateMovieCommand("", LocalDateTime.of(2021, 6, 30, 12, 30), 15),
-    //               Problem.class);
+//   @Test
+//   void notFoundMovieTest(){
+//       Problem result = template.getForObject("/api/cinema/1", Problem.class);
 //
-//
-    //       assertEquals(Status.BAD_REQUEST, result.getStatus());
-//
-//
-    //   }
-//
-    //   @Test
-    //   void notFoundMovieTest(){
-    //       Problem result = template.getForObject("/api/cinema/1", Problem.class);
-//
-    //       assertEquals(URI.create("cinema/not-found"),result.getType());
-    //       assertEquals(Status.NOT_FOUND, result.getStatus());
-    //   }
+//       assertEquals(URI.create("cinema/not-found"),result.getType());
+//       assertEquals(Status.NOT_FOUND, result.getStatus());
+//   }
 //
     //   @Test
     //   void updateWithInvalidNumberOfSeats(){

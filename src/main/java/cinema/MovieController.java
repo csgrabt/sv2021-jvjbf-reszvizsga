@@ -43,4 +43,8 @@ public class MovieController {
         return movieService.updateEmployee(id, command);
     }
 
+    @DeleteMapping
+    public void deleteAllMovie() {
+        movieService.deleteAll();
+    }
 }
