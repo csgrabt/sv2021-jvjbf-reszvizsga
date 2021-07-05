@@ -53,7 +53,7 @@ public class MovieController {
     public void deleteAllMovie() {
         movieService.deleteAll();
     }
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler({IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Problem> handleNotFound(IllegalArgumentException iae) {
         Problem problem =
@@ -70,5 +70,20 @@ public class MovieController {
 
     }
 
+    @ExceptionHandler({IllegalStateException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Problem> handleBadReservation(IllegalStateException ise) {
+        Problem problem =
+                Problem.builder()
+                        .withType(URI.create("cinema/bad-reservation"))
+                        .withTitle("bad-reservation")
+                        .withStatus(Status.BAD_REQUEST)
+                        .withDetail(ise.getMessage())
+                        .build();
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
+                .body(problem);
 
+    }
 }

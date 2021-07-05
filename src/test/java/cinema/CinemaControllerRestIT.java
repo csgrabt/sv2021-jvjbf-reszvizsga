@@ -164,16 +164,16 @@ public class CinemaControllerRestIT {
        assertEquals(Status.NOT_FOUND, result.getStatus());
    }
 
-    //   @Test
-    //   void updateWithInvalidNumberOfSeats(){
-    //       template.postForObject("/api/cinema",
-    //               new CreateMovieCommand("Titanic", LocalDateTime.of(2021, 6, 30, 12, 30), 120),
-    //               MovieDTO.class);
-//
-    //       Problem result = template.postForObject("/api/cinema/1/reserve", new CreateReservationCommand(121), Problem.class);
-//
-//
-    //       assertEquals(URI.create("cinema/bad-reservation"),result.getType());
-    //       assertEquals(Status.BAD_REQUEST, result.getStatus());
-    //   }
+    @Test
+    void updateWithInvalidNumberOfSeats(){
+        template.postForObject("/api/cinema",
+                new CreateMovieCommand("Titanic", LocalDateTime.of(2021, 6, 30, 12, 30), 120),
+                MovieDTO.class);
+
+        Problem result = template.postForObject("/api/cinema/1/reserve", new CreateReservationCommand(121), Problem.class);
+
+
+        assertEquals(URI.create("cinema/bad-reservation"),result.getType());
+        assertEquals(Status.BAD_REQUEST, result.getStatus());
+    }
 }
