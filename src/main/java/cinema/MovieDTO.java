@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -12,6 +13,6 @@ import java.time.LocalDate;
 public class MovieDTO {
 
     private String title;
-    private LocalDate date;
-    private int freeSpace;
+    private LocalDateTime date;
+    private int freeSpaces;
 }

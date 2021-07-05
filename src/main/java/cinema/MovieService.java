@@ -49,4 +49,17 @@ public class MovieService {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Movie not found:  " + id));
     }
+
+    public MovieDTO createMovie(CreateMovieCommand command) {
+        Movie movie = new Movie(
+                idGenerator.incrementAndGet(),
+                command.getTitle(),
+                command.getTime(),
+                command.getTotalSpace(),
+                command.getTotalSpace()
+        );
+        movies.add(movie);
+        return modelMapper.map(movie, MovieDTO.class);
+
+    }
 }

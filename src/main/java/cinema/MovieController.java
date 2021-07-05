@@ -1,8 +1,10 @@
 package cinema;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +26,14 @@ public class MovieController {
     public MovieDTO findEmployeeById(@PathVariable("id") long id) {
         return movieService.findMovieById(id);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public MovieDTO createMovie(@Valid @RequestBody CreateMovieCommand command) {
+        return movieService.createMovie(command);
+    }
+
+
+
+
 }
