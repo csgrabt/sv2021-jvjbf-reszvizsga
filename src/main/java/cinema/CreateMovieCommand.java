@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 public class CreateMovieCommand {
     @NotBlank(message = "Name cannot be blank")
     private String title;
-    private LocalDateTime time;
+    private LocalDateTime date;
     @Min(20)
-    private int totalSpace;
+    private int maxReservation;
 
 
 

@@ -54,9 +54,9 @@ public class MovieService {
         Movie movie = new Movie(
                 idGenerator.incrementAndGet(),
                 command.getTitle(),
-                command.getTime(),
-                command.getTotalSpace(),
-                command.getTotalSpace()
+                command.getDate(),
+                command.getMaxReservation(),
+                command.getMaxReservation()
         );
         movies.add(movie);
         return modelMapper.map(movie, MovieDTO.class);
