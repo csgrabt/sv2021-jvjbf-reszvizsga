@@ -155,15 +155,15 @@ public class CinemaControllerRestIT {
 
 
   }
-//
-//   @Test
-//   void notFoundMovieTest(){
-//       Problem result = template.getForObject("/api/cinema/1", Problem.class);
-//
-//       assertEquals(URI.create("cinema/not-found"),result.getType());
-//       assertEquals(Status.NOT_FOUND, result.getStatus());
-//   }
-//
+
+   @Test
+   void notFoundMovieTest(){
+       Problem result = template.getForObject("/api/cinema/1", Problem.class);
+
+       assertEquals(URI.create("cinema/not-found"),result.getType());
+       assertEquals(Status.NOT_FOUND, result.getStatus());
+   }
+
     //   @Test
     //   void updateWithInvalidNumberOfSeats(){
     //       template.postForObject("/api/cinema",
