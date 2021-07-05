@@ -62,4 +62,10 @@ public class MovieService {
         return modelMapper.map(movie, MovieDTO.class);
 
     }
+
+    public MovieDTO reservationMovie(long id, CreateReservationCommand command) {
+        Movie movie = movieFinder(id);
+        movie.reservation(command.getRevers());
+        return modelMapper.map(movie, MovieDTO.class);
+    }
 }

@@ -33,6 +33,10 @@ public class MovieController {
         return movieService.createMovie(command);
     }
 
+    @PostMapping("/{id}/reserve")
+    public MovieDTO updateMovie(@PathVariable("id") long id, @RequestBody CreateReservationCommand command) {
+        return movieService.reservationMovie(id, command);
+    }
 
 
 
